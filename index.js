@@ -48,6 +48,18 @@ function createItem(item) {
     saveTasks(items);
   });
   
+  editButton.addEventListener('click', function() {
+    textElement.setAttribute('contenteditable', 'true');
+    textElement.focus();
+  });
+  
+  textElement.addEventListener('blur', function() {
+    textElement.setAttribute('contenteditable', 'false');
+    
+    const items = getTasksFromDOM();
+    saveTasks(items);
+  });
+  
   return clone;
 }
 
