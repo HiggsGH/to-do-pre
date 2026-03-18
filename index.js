@@ -37,6 +37,17 @@ function createItem(item) {
     saveTasks(items);
   });
   
+  duplicateButton.addEventListener('click', function() {
+    const itemName = textElement.textContent;
+    
+    const newItem = createItem(itemName);
+    
+    listElement.prepend(newItem);
+    
+    const items = getTasksFromDOM();
+    saveTasks(items);
+  });
+  
   return clone;
 }
 
@@ -73,7 +84,7 @@ formElement.addEventListener('submit', function(event) {
     
     inputElement.value = '';
     
-    items = getTasksFromDOM();
+    const items = getTasksFromDOM();
     saveTasks(items);
   }
 });
